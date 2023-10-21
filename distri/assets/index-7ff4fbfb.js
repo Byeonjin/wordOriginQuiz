@@ -26,8 +26,8 @@
     <section class = "home-container">
     <h1>영어 어휘 분석 어원 퀴즈!</h1>
     <div>
-    <label for="words-number">문제 수: </label>
-    <input id='words-number' type="number" value="10" min="5" max="${y.length}" >
+    <label for="words-number">문제 수 선택: 
+    <input id='words-number' type="number" value="10" min="5" max="${y.length}" ></label>
     <p>최소 문제 수: 5</p>
     <p>최대 문제 수: ${y.length}</p>
     </div>
