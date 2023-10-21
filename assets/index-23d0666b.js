@@ -28,6 +28,7 @@
     <div>
     <label for="words-number">문제 수: </label>
     <input id='words-number' type="number" value="10" min="5" max="${y.length}" >
+    <p>최소 문제 수: 5</p>
     <p>최대 문제 수: ${y.length}</p>
     </div>
     <button type="button" class="gloss-quiz-start">Gloss Quiz 시작!</button>
