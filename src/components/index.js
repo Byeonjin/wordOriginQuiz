@@ -181,27 +181,47 @@ const createHome = () => {
     <p>최소 문제 수: 5</p>
     <p>최대 문제 수: ${quizData.length}</p>
     </div>
-    <button type="button" class="gloss-quiz-start">Gloss Quiz 시작!</button>
-    <button type="button" class="element-quiz-start">Element Quiz 시작!</button>
+    <div class="quiz-button-container"><button type="button" class="gloss-quiz-start">Gloss Quiz 시작!</button>
+    <button type="button" class="element-quiz-start">Element Quiz 시작!</button></div>
+    <button type="button" class="dictionary">사전 보러가기!</button>
     </section>
   `;
 
   getNode("#root").insertAdjacentHTML("afterbegin", homeHTML);
+  addGlossQuizEvent();
+  addElementQuizEvent();
+  addDictionaryEvent();
+};
 
+const addGlossQuizEvent = () => {
   getNode(".gloss-quiz-start").addEventListener("click", () => {
-    const numberOfQuiz = getNode("#words-number").value;
-    getNode(".home-container").remove();
-    console.log(typeof numberOfQuiz);
-    createGlossQuiz(parseInt(numberOfQuiz));
-  });
+    const numberOfQuiz = +getNode("#words-number").value;
 
-  getNode(".element-quiz-start").addEventListener("click", () => {
-    const numberOfQuiz = getNode("#words-number").value;
-    getNode(".home-container").remove();
-    console.log(numberOfQuiz);
+    if (numberOfQuiz < 5) {
+      window.alert("5개 이상 48개 이하의 문제 수를 설정해야합니다.");
+      getNode("#words-number").focus();
+      return;
+    }
 
-    createElementQuiz(parseInt(numberOfQuiz));
+    getNode(".home-container").remove();
+    createGlossQuiz(numberOfQuiz);
   });
 };
+
+const addElementQuizEvent = () => {
+  getNode(".element-quiz-start").addEventListener("click", () => {
+    const numberOfQuiz = +getNode("#words-number").value;
+    if (numberOfQuiz < 5) {
+      window.alert("5개 이상 48개 이하의 문제 수를 설정해야합니다.");
+      getNode("#words-number").focus();
+      return;
+    }
+    getNode(".home-container").remove();
+
+    createElementQuiz(numberOfQuiz);
+  });
+};
+
+const addDictionaryEvent = () => {};
 
 createHome();
